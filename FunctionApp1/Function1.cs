@@ -29,7 +29,7 @@ namespace FunctionApp1
     public static class Function1
     {
         [FunctionName("Handle")]
-        public static async Task<IActionResult> Handle([HttpTrigger(AuthorizationLevel.Function, "post", Route = null)]HttpRequest req, TraceWriter log)
+        public static async Task<IActionResult> Handle([HttpTrigger(AuthorizationLevel.Function, "post", Route = null)]HttpRequest req, ILogger log)
         {
             JObject body;
             using (var streamReader = new StreamReader(req.Body))
@@ -55,7 +55,7 @@ namespace FunctionApp1
         [FunctionName("DoWork")]
         public static async Task<IActionResult> DoWork([HttpTrigger(AuthorizationLevel.Function, "post", Route = null)]
                                            HttpRequest req,
-                                           TraceWriter log)
+                                           ILogger log)
         {
             JObject body;
             using (var streamReader = new StreamReader(req.Body))
